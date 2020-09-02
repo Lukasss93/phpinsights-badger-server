@@ -43,7 +43,7 @@ class BadgerController extends Controller
         ]);
     }
 
-    public function badge($author, $repo, $type)
+    public function badge($author, $repo, $type, $label = null)
     {
         try {
             $item = Badge::query()
@@ -51,11 +51,11 @@ class BadgerController extends Controller
                 ->where('repo', $repo)
                 ->firstOrFail();
 
-            $label = self::getLabel($type);
+            $label = $label ?? 'PHPInsights%20%7C%20'.self::getLabel($type);
             $value = $item->{$type} . ($type !== 'security_issues' ? '%25' : '');
             $color = self::getColor($value, $type);
 
-            $badge = "https://img.shields.io/badge/PHPInsights%20%7C%20$label%20-$value-$color.svg";
+            $badge = "https://img.shields.io/badge/$label%20-$value-$color.svg";
 
             return response(file_get_contents($badge), 200, [
                 'Content-type' => 'image/svg+xml'
