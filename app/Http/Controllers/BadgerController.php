@@ -43,8 +43,11 @@ class BadgerController extends Controller
         ]);
     }
 
-    public function badge($author, $repo, $type)
+    public function badge(Request $request, $author, $repo, $type)
     {
+        $query = $request->query();
+        $query = count($query) > 0 ? '?' . http_build_query($query) : '';
+
         try {
             $item = Badge::query()
                 ->where('author', $author)
@@ -55,13 +58,13 @@ class BadgerController extends Controller
             $value = $item->{$type} . ($type !== 'security_issues' ? '%25' : '');
             $color = self::getColor($value, $type);
 
-            $badge = "https://img.shields.io/badge/PHPInsights%20%7C%20$label%20-$value-$color.svg";
-
+            $badge = "https://img.shields.io/badge/PHPInsights%20%7C%20$label%20-$value-$color.svg" . $query;
             return response(file_get_contents($badge), 200, [
                 'Content-type' => 'image/svg+xml'
             ]);
         } catch (Exception $e) {
-            return response(file_get_contents("https://img.shields.io/badge/Badge-Invalid%20-inactive"), 200, [
+            $badge = "https://img.shields.io/badge/Badge-Invalid%20-inactive" . $query;
+            return response(file_get_contents($badge), 200, [
                 'Content-type' => 'image/svg+xml'
             ]);
         }
