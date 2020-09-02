@@ -1,24 +1,19 @@
-# Lumen PHP Framework
+# 🛡 PhpInsights Badger Server
+[Lumen Service](https://github.com/Lukasss93/phpinsights-badger-server) for hosting [PhpInsights](https://github.com/nunomaduro/phpinsights) badges sended by this [GitHub Action](https://github.com/Lukasss93/phpinsights-badger-action). 
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+## Requirements
+- PHP >= 7.3
+- OpenSSL PHP Extension
+- PDO PHP Extension
+- Mbstring PHP Extension
+- Sqlite PHP Extensions
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Installation
+1. Clone this project in your server.
+2. Set the document root domain to `project-root/public` folder.
+3. Install vendor packages with `php composer.phar install`.
+4. Create the .env file with `php composer.phar run post-root-package-install`.
+5. Change your `APP_URL` and `SERVICE_PASSWORD` in your .env file according to your preferences.
 
-## Official Documentation
-
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Usage
+Check the [GitHub Action](https://github.com/Lukasss93/phpinsights-badger-action) for the usage in your projects!
