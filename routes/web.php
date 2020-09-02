@@ -13,4 +13,4 @@
 
 $router->get('/', '\App\Http\Controllers\BadgerController@index');
 $router->post('/', ['middleware' => 'pass', 'uses'=>'\App\Http\Controllers\BadgerController@save']);
-$router->get('/{author}/{repo}/{type}[/{label}]', '\App\Http\Controllers\BadgerController@badge');
+$router->get('/{author}/{repo}/{type}', '\App\Http\Controllers\BadgerController@badge');
